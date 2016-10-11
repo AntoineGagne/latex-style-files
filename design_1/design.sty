@@ -36,16 +36,16 @@
         \centering%
         \IfNoValueTF{#2}{}{\caption[#2]{#2}}%
         \IfNoValueTF{#3}{}{\label{#3}}%
-        \begin{adjustbox}{width=1.1\textwidth,center=\textwidth}%
+        \begin{adjustbox}{width=\textwidth,center=\textwidth}%
             \renewcommand{\arraystretch}{1.4}%
             \begin{tabular}{c | *{#1}{c |}}%
                 \cline{1-\value{criterianumber}}%
                 \multicolumn{1}{| r |}{%
                     \diagbox[width=34em,height=34em, trim=l]{%
-                        \parbox{12cm}{\centering \textbf{Objectifs}}%
+                        \parbox{12cm}{\centering \huge\textsc{Objectifs}\vspace{7pt}}%
                     }{%
                         \rotatebox[origin=r]{90}{%
-                            \parbox{12cm}{\centering \textbf{Critères}}%
+                            \parbox{12cm}{\centering \huge\textsc{Critères}}%
                         }%
                     }%
                 }&%
