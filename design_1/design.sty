@@ -1,0 +1,57 @@
+%!TEX encoding = UTF-8 Unicode
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[USenglish,french]{babel}
+\RequirePackage{adjustbox}
+\RequirePackage{diagbox}
+\RequirePackage{float}
+\RequirePackage{lmodern}
+\RequirePackage{multirow}
+\RequirePackage{rotating}
+\RequirePackage{xparse}
+
+% Defines the command `\criteria` that is used to add criterias to the house of qualities
+\DeclareExpandableDocumentCommand{\criteria}{m}{%
+    \rotatebox[origin=c]{90}{\parbox{12cm}{\centering #1}}%
+}%
+
+% Defines the `\objective` command that is used to add objectives to the house of qualities
+\DeclareExpandableDocumentCommand{\objective}{m}{%
+    \multicolumn{1}{ | c | }{\parbox{12cm}{\centering #1}}%
+}%
+
+% Defines the `\constraint` command that is used to add objectives to house of qualities
+\DeclareExpandableDocumentCommand{\constraint}{m}{%
+    \rotatebox[origin=c]{90}{\parbox{6cm}{\centering #1}}%
+}%
+
+% Defines the `houseofqualities` environment
+\NewDocumentEnvironment{houseofqualities}{moo}{%
+    % Defines a counter to keep track of how many criterias there are
+    \newcounter{criterianumber}%
+    \setcounter{criterianumber}{#1}%
+    \addtocounter{criterianumber}{1}%
+
+    \begin{table}[htp!]%
+        \centering%
+        \IfNoValueTF{#2}{}{\caption[#2]{#2}}%
+        \IfNoValueTF{#3}{}{\label{#3}}%
+        \begin{adjustbox}{width=1.1\textwidth,center=\textwidth}%
+            \renewcommand{\arraystretch}{1.4}%
+            \begin{tabular}{c | *{#1}{c |}}%
+                \cline{1-\value{criterianumber}}%
+                \multicolumn{1}{| r |}{%
+                    \diagbox[width=34em,height=34em, trim=l]{%
+                        \parbox{12cm}{\centering \textbf{Objectifs}}%
+                    }{%
+                        \rotatebox[origin=r]{90}{%
+                            \parbox{12cm}{\centering \textbf{Critères}}%
+                        }%
+                    }%
+                }&%
+}{%
+                \\ \cline{2-\value{criterianumber}}%
+            \end{tabular}%
+        \end{adjustbox}%
+    \end{table}%
+}
