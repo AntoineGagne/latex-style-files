@@ -70,3 +70,44 @@
         \end{adjustbox}%
     \end{table}%
 }
+
+% Defines a command `\dline` that adds a double line
+\DeclareExpandableDocumentCommand{\dline}{}{\hline\hline}%
+
+% Defines a command `\newsectionheader` used to create a new section header in the requirements table
+\DeclareExpandableDocumentCommand{\newsectionheader}{omm}{%
+    \multicolumn{6}{| c |}{%
+        \multirow{2}{*}{%
+            \IfNoValueTF{#1}{}{%
+                \ref{#1}~--~%
+            }%
+            \textbf{#2}%
+        }%
+    }%
+    & \multicolumn{1}{ c |}{\multirow{2}{*}{\textbf{#3~\%}}}%
+    \\ \multicolumn{6}{| l |}{\multirow{1}{*}{}} & \multicolumn{1}{ c |}{\multirow{1}{*}{}}
+}%
+
+% Defines a command `\newsection` used to optionally put a reference to a label
+\DeclareExpandableDocumentCommand{\newsection}{om}{%
+    \IfNoValueTF{#1}{}{\ref{#1}~--~}%
+    #2%
+}%
+
+% Defines a new environment `requirements` used to create a table of requirements
+\NewDocumentEnvironment{requirements}{oo}{%
+    \begin{table}[hbp!]
+        \IfNoValueTF{#1}{}{\caption[#1]{#1}}%
+        \IfNoValueTF{#2}{}{\label{#2}}%
+        \begin{adjustbox}{width=\textwidth,center=\textwidth}
+            \renewcommand{\arraystretch}{1.8}
+            \begin{tabular}{| p{12cm} | r l r | c | c | c |}
+                \hline
+                \multicolumn{1}{|c|}{\textbf{Critères d'évaluation} } & \multicolumn{3}{c|}{\textbf{Barème} } & \textbf{Min.} & \textbf{Max.} & \textbf{Pond.}
+                \\ \dline
+}{%
+            \\ \hline
+            \end{tabular}
+        \end{adjustbox}
+    \end{table}
+}
