@@ -15,6 +15,7 @@
     \rotatebox[origin=c]{90}{\parbox{12cm}{\centering #1}}%
 }%
 
+% Defines the command `\globalobjective` that is used to add global objective on top of the objectives
 \DeclareExpandableDocumentCommand{\globalobjective}{O{6cm} m m}{%
     \multicolumn{1}{ | c }{\multirow{#2}{*}{\parbox{#1}{\centering #3}}}%
 }
@@ -29,7 +30,9 @@
     \rotatebox[origin=c]{90}{\parbox{6cm}{\centering #1}}%
 }%
 
+% Defines the `\emptycell` command that is used for empty cells with no borders
 \DeclareExpandableDocumentCommand{\emptycell}{}{\multicolumn{1}{c}{}}%
+% Defines the `\lborder` command that is used for cell with only a left border
 \DeclareExpandableDocumentCommand{\lborder}{}{\multicolumn{1}{| c}{}}%
 
 % Defines the `houseofqualities` environment
@@ -39,6 +42,7 @@
     \setcounter{criterianumber}{#1}%
     \addtocounter{criterianumber}{1}%
 
+    % Defines a counter that is used for the number of columns
     \newcounter{criterias}%
     \setcounter{criterias}{#1}%
     \addtocounter{criterias}{2}%
