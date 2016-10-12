@@ -15,6 +15,10 @@
     \rotatebox[origin=c]{90}{\parbox{12cm}{\centering #1}}%
 }%
 
+\DeclareExpandableDocumentCommand{\globalobjective}{O{6cm} m m}{%
+    \multicolumn{1}{ | c }{\multirow{#2}{*}{\parbox{#1}{\centering #3}}}%
+}
+
 % Defines the `\objective` command that is used to add objectives to the house of qualities
 \DeclareExpandableDocumentCommand{\objective}{m}{%
     \multicolumn{1}{ | c | }{\parbox{12cm}{\centering #1}}%
@@ -25,12 +29,19 @@
     \rotatebox[origin=c]{90}{\parbox{6cm}{\centering #1}}%
 }%
 
+\DeclareExpandableDocumentCommand{\emptycell}{}{\multicolumn{1}{c}{}}%
+\DeclareExpandableDocumentCommand{\lborder}{}{\multicolumn{1}{| c}{}}%
+
 % Defines the `houseofqualities` environment
 \NewDocumentEnvironment{houseofqualities}{moo}{%
     % Defines a counter to keep track of how many criterias there are
     \newcounter{criterianumber}%
     \setcounter{criterianumber}{#1}%
     \addtocounter{criterianumber}{1}%
+
+    \newcounter{criterias}%
+    \setcounter{criterias}{#1}%
+    \addtocounter{criterias}{2}%
 
     \begin{table}[htp!]%
         \centering%
@@ -39,8 +50,8 @@
         \begin{adjustbox}{width=\textwidth,center=\textwidth}%
             \renewcommand{\arraystretch}{1.4}%
             \begin{tabular}{c | *{#1}{c |}}%
-                \cline{1-\value{criterianumber}}%
-                \multicolumn{1}{| r |}{%
+                \cline{3-\value{criterianumber}}%
+                \emptycell & \emptycell & \multicolumn{1}{| r |}{%
                     \diagbox[width=34em,height=34em, trim=l]{%
                         \parbox{12cm}{\centering \huge\textsc{Objectifs}\vspace{7pt}}%
                     }{%
@@ -50,7 +61,7 @@
                     }%
                 }&%
 }{%
-                \\ \cline{2-\value{criterianumber}}%
+                \\ \cline{4-\value{criterianumber}}%
             \end{tabular}%
         \end{adjustbox}%
     \end{table}%
