@@ -21,3 +21,7 @@ kpsewhich -var-value=TEXMFHOME
 Then, you will have to create the folder `tex/latex` inside the folder returned by the previous command. You can then copy or symlink the package files to this directory.
 
 **Note:** If this command did not work, check this [link](http://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te/1167#1167) for more help.
+
+## License
+
+MIT License. See [LICENSE](LICENSE).
