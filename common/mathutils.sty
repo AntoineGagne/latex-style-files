@@ -1,0 +1,12 @@
+%!TEX encoding = UTF-8 Unicode
+
+\RequirePackage{xparse}
+
+% Command for a set
+\DeclareDocumentCommand{\set}{m}{\left\{#1\right\}}%
+% Command for the cardinal of a set or the absolute value of an element
+\DeclareDocumentCommand{\cardinal}{m}{\left|#1\right|}%
+% Command for the positive integers set
+\DeclareDocumentCommand{\N}{}{\mathbb{N}}%
+% Command for the integers set
+\DeclareDocumentCommand{\Z}{}{\mathbb{Z}}%
