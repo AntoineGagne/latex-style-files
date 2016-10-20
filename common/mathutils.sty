@@ -1,5 +1,6 @@
 %!TEX encoding = UTF-8 Unicode
 
+\RequirePackage{mathtools}
 \RequirePackage{xparse}
 
 % Command for a set
@@ -7,6 +8,10 @@
 % Command for the cardinal of a set or the absolute value of an element
 \DeclareDocumentCommand{\cardinal}{m}{\left|#1\right|}%
 % Command for the positive integers set
-\DeclareDocumentCommand{\N}{}{\mathbb{N}}%
+\DeclareMathOperator{\N}{\mathbb{N}}%
 % Command for the integers set
-\DeclareDocumentCommand{\Z}{}{\mathbb{Z}}%
+\DeclareMathOperator{\Z}{\mathbb{Z}}%
+% Command for the euler constant
+\DeclareMathOperator{\e}{\mathrm{e}}%
+% Command for easier integral typesetting
+\DeclareMathOperator*{\integral}{\int\limits}
