@@ -6,6 +6,7 @@
 \RequirePackage{diagbox}
 \RequirePackage{float}
 \RequirePackage{lmodern}
+\RequirePackage{longtable}
 \RequirePackage{multirow}
 \RequirePackage{rotating}
 \RequirePackage{xparse}
@@ -103,10 +104,58 @@
             \begin{tabular}{| p{12cm} | r l r | c | c | c |}
                 \hline
                 \multicolumn{1}{|c|}{\textbf{Critères d'évaluation} } & \multicolumn{3}{c|}{\textbf{Barème} } & \textbf{Min.} & \textbf{Max.} & \textbf{Pond.}
-                \\ \dline
+                \\ \dline%
 }{%
             \\ \hline
             \end{tabular}
         \end{adjustbox}
     \end{table}
 }
+
+% Defines a new environment `studyplan` used to create a study plan
+\NewDocumentEnvironment{studyplan}{oo}{%
+    \DeclareExpandableDocumentCommand{\longtabletitle}{m}{%
+        \multicolumn{1}{ | p{16cm} |}{\centering \textbf{##1}}%
+    }%
+    \begin{center}
+        \renewcommand{\arraystretch}{1.3}
+        \begin{longtable}[c]{|p{16cm}|}
+            \kill
+            \IfNoValueTF{#1}{}{\caption[#1]{#1}}%
+            \IfNoValueTF{#2}{}{\label{#2}}%
+            \hline
+            \longtabletitle{Plan d'étude}%
+            \endfirsthead%
+            \hline
+            \longtabletitle{Plan d'étude (suite)}%
+            \\ \hline
+            \endhead%
+            \endfoot%
+            \endlastfoot%
+            \\ \hline
+}{%
+            \\ \hline
+        \end{longtable}%
+    \end{center}%
+}%
+
+% Defines a new command `studyplansection` used to create study plan sections
+\DeclareExpandableDocumentCommand{\studyplansection}{m}{%
+    \textbf{#1}%
+    \\ \hline
+}%
+
+% Defines a new command `studyplancriteria` used to created study plan criterias
+\DeclareExpandableDocumentCommand{\studyplancriteria}{om}{%
+    \textbf{Critère:} \underline{\IfNoValueTF{#1}{}{\ref{#1} -- }#2}
+}%
+
+% Defines a new command `studyplanprocedure` used to created study plan procedures
+\DeclareExpandableDocumentCommand{\studyplanprocedure}{m}{%
+    \textbf{Procédure:} #1
+}%
+
+% Defines a new command `studyplanhypothesis` used to created study plan hypothesis
+\DeclareExpandableDocumentCommand{\studyplanhypothesis}{m}{%
+    \textbf{Hypothèse:} #1
+}%
