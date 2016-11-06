@@ -1,12 +1,14 @@
 %!TEX encoding = UTF-8 Unicode
 
-\usepackage{epsfig}
-\usepackage{amsmath}
-\usepackage{amsfonts,amssymb}
-\usepackage{tikz,tikz-qtree}
+\RequirePackage{epsfig}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{tikz}
+\RequirePackage{tikz-qtree}
 \usetikzlibrary{positioning}
 \usetikzlibrary{automata,backgrounds,snakes}
-\usepackage[framemethod=tikz]{mdframed}
+\RequirePackage[framemethod=tikz]{mdframed}
 
 %SPECIAL SYMBOLS
 
@@ -26,6 +28,7 @@
 \newcommand{\back}{$\backslash$}
 \renewcommand{\choose}[2]{\genfrac{(}{)}{0pt}{}{#1}{#2}}
 \newcommand{\xor}{\oplus}
+\newcommand{\symm}{\sim}
 
 \newcommand{\dmd}{% diamond
   {\qbezier(0,0) (0.5,0.5) (1,1)
