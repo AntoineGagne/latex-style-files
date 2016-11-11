@@ -31,7 +31,7 @@ make
 ou
 
 ```shell
-make install
+make demo
 ```
 
 ## Nouvelles commandes
