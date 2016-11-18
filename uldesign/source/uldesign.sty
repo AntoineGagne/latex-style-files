@@ -48,7 +48,7 @@
     \setcounter{criterias}{#1}%
     \addtocounter{criterias}{2}%
 
-    \begin{table}[htp!]%
+    \begin{table}[H]%
         \centering%
         \IfNoValueTF{#2}{}{\caption[#2]{#2}}%
         \IfNoValueTF{#3}{}{\label{#3}}%
@@ -96,7 +96,7 @@
 
 % Defines a new environment `requirements` used to create a table of requirements
 \NewDocumentEnvironment{requirements}{oo}{%
-    \begin{table}[hbp!]
+    \begin{table}[H]
         \IfNoValueTF{#1}{}{\caption[#1]{#1}}%
         \IfNoValueTF{#2}{}{\label{#2}}%
         \begin{adjustbox}{width=\textwidth,center=\textwidth}
