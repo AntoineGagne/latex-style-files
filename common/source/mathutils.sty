@@ -9,6 +9,10 @@
         #1\IfNoValueTF{#2}{}{\mid{} #2}%
     \right\}%
 }%
+% Command for expressions between parenthesis
+\DeclareDocumentCommand{\paren}{m}{%
+    \left(#1\right)
+}
 % Command for the cardinal of a set or the absolute value of an element
 \DeclareDocumentCommand{\cardinal}{m}{\left|#1\right|}%
 % Command for the positive integers set
