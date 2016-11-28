@@ -13,13 +13,21 @@
 \DeclareDocumentCommand{\paren}{m}{%
     \left(#1\right)
 }
+% Command for absolute values
+\DeclareDocumentCommand{\abs}{m}{%
+    \left\lvert{}#1\right\rvert%
+}
+% Command for the norm
+\DeclareDocumentCommand{\norm}{m}{%
+    \left\lVert{}#1\right\rVert%
+}
 % Command for the cardinal of a set or the absolute value of an element
 \DeclareDocumentCommand{\cardinal}{m}{\left|#1\right|}%
 % Command for the positive integers set
 \DeclareMathOperator{\N}{\mathbb{N}}%
 % Command for the integers set
 \DeclareMathOperator{\Z}{\mathbb{Z}}%
-% Command for the euler constant
+% Command for the Euler constant
 \DeclareMathOperator{\e}{\mathrm{e}}%
 % Command for easier integral typesetting
 \DeclareMathOperator*{\integral}{\int\limits}
