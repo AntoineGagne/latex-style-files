@@ -29,3 +29,11 @@
 \DeclareMathOperator{\e}{\mathrm{e}}%
 % Command for easier integral typesetting
 \DeclareMathOperator*{\integral}{\int\limits}
+
+% Command for easier probability writting
+% Taken from: https://tex.stackexchange.com/a/141685 (Sun Feb 25 13:09:16 EST
+% 2018)
+\newcommand\givenbase[1][]{\:#1\lvert\:}
+\let\given\givenbase%
+\newcommand\sgiven{\givenbase[\delimsize]}
+\DeclarePairedDelimiterX\Basics[1](){\let\given\sgiven #1}
