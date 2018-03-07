@@ -1,5 +1,7 @@
 \RequirePackage{iftex}
 \RequirePackage{siunitx}
+\RequirePackage{microtype}
+\RequirePackage{xparse}
 
 \ifLuaTeX%
 \RequirePackage{fontspec}
@@ -40,4 +42,19 @@
 }
 \newcommand{\grammarsingleletterterminal}[1]{%
     \relax\ifmmode\mathtt{#1}\else\texttt{#1}\fi%
+}
+\DeclareDocumentCommand{\firstset}{o}{%
+    \ifmmode\mathrm{FIRST}\IfNoValueTF{#1}{}{\!\paren{#1}}%
+    \else FIRST\IfNoValueTF{#1}{}{(#1)}%
+    \fi
+}
+\DeclareDocumentCommand{\predictset}{o}{%
+    \ifmmode\mathrm{PREDICT}\IfNoValueTF{#1}{}{\!\paren{#1}}%
+    \else PREDICT\IfNoValueTF{#1}{}{(#1)}%
+    \fi
+}
+\DeclareDocumentCommand{\followset}{o}{%
+    \ifmmode\mathrm{FOLLOW}\IfNoValueTF{#1}{}{\!\paren{#1}}%
+    \else FOLLOW\IfNoValueTF{#1}{}{(#1)}%
+    \fi
 }
