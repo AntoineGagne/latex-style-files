@@ -1,0 +1,43 @@
+\RequirePackage{iftex}
+\RequirePackage{siunitx}
+
+\ifLuaTeX%
+\RequirePackage{fontspec}
+\RequirePackage{lualatex-math}
+\RequirePackage{luacode}
+\setmonofont[
+    Contextuals={Alternate}
+]{Fira Code}
+\makeatletter
+\def\verbatim@nolig@list{}
+\makeatother
+\fi
+
+
+\sisetup{%
+    add-decimal-zero = true,%
+    round-mode = places,%
+    round-precision = 3%
+}%
+
+\newcommand{\sequence}[1]{%
+    \relax\ifmmode\mathtt{#1}\else\texttt{#1}\fi%
+}
+\newcommand{\regex}[1]{%
+    \relax\ifmmode\mathtt{#1}\else\texttt{#1}\fi%
+}
+\newcommand{\name}[1]{%
+    \relax\ifmmode\mathbf{#1}\else\textbf{#1}\fi
+}
+\newcommand{\regexdefinitionsymbol}[1]{%
+    \relax\ifmmode\mathit{#1}\else\textit{#1}\fi%
+}
+\newcommand{\grammarnonterminal}[1]{%
+    \relax\ifmmode\mathit{#1}\else\textit{#1}\fi%
+}
+\newcommand{\grammarterminal}[1]{%
+    \relax\ifmmode\mathbf{#1}\else\textbf{#1}\fi%
+}
+\newcommand{\grammarsingleletterterminal}[1]{%
+    \relax\ifmmode\mathtt{#1}\else\texttt{#1}\fi%
+}
