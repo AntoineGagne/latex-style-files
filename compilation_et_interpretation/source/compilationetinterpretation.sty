@@ -1,5 +1,6 @@
 \RequirePackage{iftex}
 \RequirePackage{siunitx}
+\RequirePackage{mathtools}
 \RequirePackage{microtype}
 \RequirePackage{xparse}
 
@@ -22,6 +23,8 @@
     round-precision = 3%
 }%
 
+\DeclareMathOperator{\assign}{\coloneqq}%
+
 \newcommand{\sequence}[1]{%
     \relax\ifmmode\mathtt{#1}\else\texttt{#1}\fi%
 }
@@ -37,7 +40,16 @@
 \newcommand{\grammarnonterminal}[1]{%
     \relax\ifmmode\mathit{#1}\else\textit{#1}\fi%
 }
+\newcommand{\grammarsynthesizedattribute}[1]{%
+    \relax\ifmmode\mathit{#1}\else\textit{#1}\fi%
+}
+\newcommand{\grammarinheritedattribute}[1]{%
+    \relax\ifmmode\mathit{#1}\else\textit{#1}\fi%
+}
 \newcommand{\grammarterminal}[1]{%
+    \relax\ifmmode\mathbf{#1}\else\textbf{#1}\fi%
+}
+\newcommand{\syntaxdirectedtranslationstatement}[1]{%
     \relax\ifmmode\mathbf{#1}\else\textbf{#1}\fi%
 }
 \newcommand{\grammarsingleletterterminal}[1]{%
@@ -47,6 +59,19 @@
     \ifmmode\mathrm{FIRST}\IfNoValueTF{#1}{}{\!\paren{#1}}%
     \else FIRST\IfNoValueTF{#1}{}{(#1)}%
     \fi
+}
+\newcommand{\conditionalspacing}[2]{%
+    \ifmmode#1\else \fi #2\ifmmode#1\else \fi%
+}
+\DeclareDocumentCommand{\syntaxdirectedtranslationconditional}{m m o}{%
+    \syntaxdirectedtranslationstatement{if}\conditionalspacing{\;}{#1}\syntaxdirectedtranslationstatement{then}\conditionalspacing{\;}{#2}\IfNoValueTF{#3}{}{\syntaxdirectedtranslationstatement{else}\conditionalspacing{\;}{#3}}
+}
+\DeclareDocumentCommand{\nonterminalattribute}{s m m}{%
+    #2.\IfBooleanTF{#1}{%
+        \grammarinheritedattribute{#3}%
+    }{%
+        \grammarsynthesizedattribute{#3}%
+    }
 }
 \DeclareDocumentCommand{\predictset}{o}{%
     \ifmmode\mathrm{PREDICT}\IfNoValueTF{#1}{}{\!\paren{#1}}%
