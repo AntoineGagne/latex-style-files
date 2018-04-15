@@ -3,6 +3,7 @@
 \RequirePackage{mathtools}
 \RequirePackage{microtype}
 \RequirePackage{xparse}
+\RequirePackage{syntax}
 
 \ifLuaTeX%
 \RequirePackage{fontspec}
@@ -24,6 +25,8 @@
 }%
 
 \DeclareMathOperator{\assign}{\coloneqq}%
+\renewcommand{\syntleft}{\itshape}%
+\renewcommand{\syntright}{\normalfont}%
 
 \newcommand{\sequence}[1]{%
     \relax\ifmmode\mathtt{#1}\else\texttt{#1}\fi%
@@ -36,6 +39,9 @@
 }
 \newcommand{\regexdefinitionsymbol}[1]{%
     \relax\ifmmode\mathit{#1}\else\textit{#1}\fi%
+}
+\newcommand{\grammarvalue}[1]{%
+    \relax\ifmmode\mathsf{#1}\else\textsf{#1}\fi%
 }
 \newcommand{\grammarnonterminal}[1]{%
     \relax\ifmmode\mathit{#1}\else\textit{#1}\fi%
@@ -59,6 +65,15 @@
     \ifmmode\mathrm{FIRST}\IfNoValueTF{#1}{}{\!\paren{#1}}%
     \else FIRST\IfNoValueTF{#1}{}{(#1)}%
     \fi
+}
+\newcommand{\generatedclass}[1]{%
+    \relax\ifmmode\mathsf{#1}\else\textsf{#1}\fi%
+}
+\newcommand{\generatedor}{%
+    \relax\ifmmode\mathtt{||}\else\texttt{||}\fi%
+}
+\newcommand{\generate}[1]{%
+    \relax\ifmmode\mathit{gen}\left(#1\right)\else\textit{gen}(#1)\fi%
 }
 \newcommand{\conditionalspacing}[2]{%
     \ifmmode#1\else \fi #2\ifmmode#1\else \fi%
