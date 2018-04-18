@@ -4,6 +4,8 @@
 \RequirePackage{microtype}
 \RequirePackage{xparse}
 \RequirePackage{syntax}
+\RequirePackage{listings}
+\RequirePackage{xcolor}
 
 \ifLuaTeX%
 \RequirePackage{fontspec}
@@ -97,4 +99,12 @@
     \ifmmode\mathrm{FOLLOW}\IfNoValueTF{#1}{}{\!\paren{#1}}%
     \else FOLLOW\IfNoValueTF{#1}{}{(#1)}%
     \fi
+}
+
+\lstdefinelanguage{generatedcode}{%
+    morekeywords={%
+        if,%
+        goto
+    },
+    morecomment=[l]{//}%
 }
